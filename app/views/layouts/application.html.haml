@@ -21,6 +21,14 @@
   = csrf_meta_tag
 
 %body
+  %nav.navbar.navbar-default
+    .container-fluid
+      .navbar-header
+        %ul.nav.navbar-nav
+          %li{:class => "#{'active' if current_page?(tasks_path)}"}=link_to "Tasks", tasks_path
+          %li{:class => "#{'active' if current_page?(projects_path)}"}=link_to "Projects", projects_path
+          %li{:class => "#{'active' if current_page?(project_phases_path)}"}=link_to "Project Phases", project_phases_path
+          /%li{:class => "#{'active' if current_page?(root_path)}"}=link_to "Home", root_path
 
   = yield
   = javascript_include_tag "application"
