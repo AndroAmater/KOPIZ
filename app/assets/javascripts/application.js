@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require app-dashboard-layout
 //= require rails-ujs
 //= require turbolinks
 //= require foundation
@@ -21,9 +20,3 @@
 
 
 $(document).foundation();
-
-$('[data-app-dashboard-toggle-shrink]').on('click', function(e) {
-  e.preventDefault();
-  $(this).parents('.app-dashboard').toggleClass('shrink-medium').toggleClass('shrink-large');
-});
-
