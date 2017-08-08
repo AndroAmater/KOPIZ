@@ -1,24 +1,5 @@
-%h1 New Task
-= form_for @task, url: {action: "create"} do |f|
-  = f.label "Name:"
-  = f.text_field :name
-  = f.label "Description::"
-  = f.text_area :description, size: "30x20"
-  = f.label "Due Date:"
-  = f.datetime_select :due_date
-  = f.label "Link:"
-  = f.text_field :link
-  = f.label "Status:"
-  = collection_select( :task, :status_id, ::Status.all, :id, :status_id, {}, { :multiple => false } )
-  = f.label "Context:"
-  = collection_select( :task, :context_id, ::Context.all, :id, :context, {}, { :multiple => false } )
-  = f.label "Project Phase:"
-  = collection_select( :task, :project_phase_id, ::ProjectPhase.all, :id, :name, {}, { :multiple => false } )
-  = f.label "Review Period:"
-  = collection_select( :task, :review_period_id, ::ReviewPeriod.all, :id, :review_period_id, {}, { :multiple => false } )
-  = f.label "Priority:"
-  = collection_select( :task, :priority_id, ::Priority.all, :id, :priority_id, {}, { :multiple => false } )
-  %br
-  = f.submit "Create"
+%h3 New Task
+
+= render 'form', task: @task
 
 = link_to 'Back', tasks_path
