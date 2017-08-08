@@ -1,0 +1,7 @@
+= simple_form_for(@project_phase) do |f|
+  = f.error_notification
+  = f.input :name
+  = f.input :description
+  = collection_select( :project_phase, :project_id, ::Project.all, :id, :name, {}, { :multiple => false } )
+  %br
+  = f.button :submit

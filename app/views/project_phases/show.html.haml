@@ -1,0 +1,18 @@
+%p#notice= notice
+%h1= @project_phase.name
+%p
+  %strong Description:
+  = @project_phase.description
+%h2 Tasks:
+%table
+  %tr
+    %th Due Date
+    %th Name
+    %th Description
+    - ::Task.all.where("project_phase_id = ?", params[:project_phase_id]).order('due_date ASC').each do |task|
+      %td= task.due_date
+      %td= task.name
+      %td= task.description
+
+= link_to 'Edit', edit_project_phase_path(@project_phase)
+= link_to 'Back', project_phases_path
