@@ -15,9 +15,20 @@
  */
 
 @import 'bootstrap';
+@import 'rails_bootstrap_forms';
 
 * {
 	font-family: Helvetica;
+}
+
+.nav-link {
+	color: LightSlateGrey;
+}
+
+
+.active {
+	background-color: #F0F8FF;
+	color: DarkSlateGrey;
 }
 
 .pretty th .current {
