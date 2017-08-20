@@ -1,33 +1,35 @@
-%p#notice= notice
-%table.table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Due date
-      %th Link
-      %th Attachment
-      %th Context
-      %th Priority
-      %th Status
-      %th Review Period
-      %th Project Phase
-      %th{:colspan => "3"}
-  %tbody
-    - @tasks.each do |task|
-      %tr
-        %td= task.name
-        %td= task.description
-        %td= task.due_date
-        %td= task.link
-        %td= task.attachment
-        %td= task.context.context
-        %td= task.priority.priority_id
-        %td= task.status.status_id
-        %td= task.review_period.review_period_id
-        %td= task.project_phase.name
-        %td= link_to 'Show', task
-        %td= link_to 'Edit', edit_task_path(task)
-        %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Task', new_task_path
+.container-fluid
+  %p#notice= notice
+  .row
+    .col-3
+      /= render "_sort_nav"
+      %p test
+    .col
+      %table.table{ :align => "right"}
+        %thead
+          .pretty
+            %tr
+              %th=sortable "name"
+              %th=sortable "description"
+              %th=sortable "due_date"
+              %th=sortable "context"
+              %th=sortable "priority"
+              %th=sortable "status"
+              /%th=sortable "review_period", "Review Period"
+              /%th=sortable "project_phase", "Project Phase"
+        %tbody
+          - @tasks.each do |task|
+            %tr.task
+              %td= task.name
+              %td= task.description
+              %td= task.due_date
+              %td= task.context.context
+              %td= task.priority.priority_id
+              %td= task.status.status_id
+              /%td= task.review_period.review_period_id
+              /%td= task.project_phase.name
+              %td= link_to 'Show', task
+              %td= link_to 'Edit', edit_task_path(task)
+              %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
+  %br/
+  = link_to 'New Task', new_task_path

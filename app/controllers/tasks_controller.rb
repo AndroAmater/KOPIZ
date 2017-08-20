@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
   layout "application"
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.order(sort_column + " " + sort_direction)
   end
 
   # GET /tasks/1
@@ -72,4 +73,12 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:name, :description, :due_date, :link, :attachment, :context_id, :review_period_id, :priority_id, :project_phase_id, :status_id)
     end
+
+    def sort_column
+    Task.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 end
