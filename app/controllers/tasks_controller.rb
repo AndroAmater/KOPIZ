@@ -44,7 +44,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to tasks_url, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -75,7 +75,7 @@ class TasksController < ApplicationController
     end
 
     def sort_column
-    Task.column_names.include?(params[:sort]) ? params[:sort] : "name"
+      Task.column_names.include?(params[:sort]) ? params[:sort] : "name"
   end
   
   def sort_direction

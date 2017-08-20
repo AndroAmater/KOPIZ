@@ -1,14 +1,23 @@
-.form-group
-  = bootstrap_form_for @task, url: {action: "create"} do |f|
-    = collection_select( :task, :status_id, ::Status.all, :id, :status_id, {}, { :multiple => false } )
-    = collection_select( :task, :context_id, ::Context.all, :id, :context, {}, { :multiple => false } )
-    = collection_select( :task, :project_phase_id, ::ProjectPhase.all, :id, :name, {}, { :multiple => false } )
-    = collection_select( :task, :review_period_id, ::ReviewPeriod.all, :id, :review_period_id, {}, { :multiple => false } )
-    = collection_select( :task, :priority_id, ::Priority.all, :id, :priority_id, {}, { :multiple => false } )
-    %p
-    = f.text_field :name
-    = f.text_area :description, size: "30x20"
-    = f.datetime_select :due_date
-    = f.text_field :link
-    %br
-    = f.submit "Create"
+.container-fluid
+  .row
+    .col
+    .col-sm-4
+      .form-group
+        = bootstrap_form_for @task, url: {action: "create"} do |f|
+          = collection_select( :task, :status_id, ::Status.all, :id, :status_id, {}, { :multiple => false } )
+          %br/
+          = collection_select( :task, :context_id, ::Context.all, :id, :context, {}, { :multiple => false } )
+          %br/
+          = collection_select( :task, :project_phase_id, ::ProjectPhase.all, :id, :name, {}, { :multiple => false } )
+          %br/
+          = collection_select( :task, :review_period_id, ::ReviewPeriod.all, :id, :review_period_id, {}, { :multiple => false } )
+          %br/
+          = collection_select( :task, :priority_id, ::Priority.all, :id, :priority_id, {}, { :multiple => false } )
+          %p
+          = f.text_field :name
+          = f.text_area :description, size: "10x20"
+          = f.datetime_select :due_date
+          = f.text_field :link
+          %br
+          = f.submit "Create"
+    .col

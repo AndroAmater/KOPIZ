@@ -21,7 +21,10 @@
   = csrf_meta_tag
 
 %body
-  %ul.nav.justify-content-center{:style => "padding-top: 15px"}
+  %ul.nav
+    .align-left  
+      %strong
+        %a.brand Kopiz
     %li.nav-item
       %a.nav-link{:href => "/tasks", :class => "#{'active' if current_page?(tasks_path)}"} Tasks
     %li.nav-item
@@ -31,7 +34,6 @@
     %li.nav-item
       %p.nav-link |
     %li.nav-item
-      %a.nav-link{:href => "project_phases", :class => "#{'active' if current_page?(project_phases_path)}"} Project Phases
-    /%li{:class => "#{'active' if current_page?(root_path)}"}=link_to "Home", root_path   
+      %a.nav-link{:href => "project_phases", :class => "#{'active' if current_page?(project_phases_path)}"} Project Phases  
   = yield
   = javascript_include_tag "application"
