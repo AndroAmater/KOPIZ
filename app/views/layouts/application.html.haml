@@ -16,24 +16,27 @@
   %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 
   %title= content_for?(:title) ? yield(:title) : "KOPIZ"
-
+  %link{:href => " https://fonts.googleapis.com/css?family=Merriweather", :rel => "stylesheet"}
   = stylesheet_link_tag "application"
   = csrf_meta_tag
 
 %body
-  %ul.nav
-    .align-left  
-      %strong
-        %a.brand Kopiz
-    %li.nav-item
-      %a.nav-link{:href => "/tasks", :class => "#{'active' if current_page?(tasks_path)}"} Tasks
-    %li.nav-item
-      %p.nav-link |
-    %li.nav-item
-      %a.nav-link{:href => "/projects", :class => "#{'active' if current_page?(projects_path)}"} Projects
-    %li.nav-item
-      %p.nav-link |
-    %li.nav-item
-      %a.nav-link{:href => "project_phases", :class => "#{'active' if current_page?(project_phases_path)}"} Project Phases  
-  = yield
+  .container-fluid
+    .row
+      .col-md-2.navigation-bar
+        %h2.text-align-left.brand Kopiz
+        %ul.nav-list
+          %li.nav-item
+            Tasks
+          %li.nav-item
+            Projects
+          %li.nav-item
+            Project Phases
+          %li.nav-item
+            Lorem
+          %li.nav-item
+            Ipsum
+          %li.nav-item
+            Dolor
+      = yield
   = javascript_include_tag "application"

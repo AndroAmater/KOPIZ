@@ -18,30 +18,47 @@
 @import 'rails_bootstrap_forms';
 
 * {
-	font-family: Helvetica;
+	font-family: 'Merriweather', serif;
+	color: #3DD6D0;
+}
+
+.content-col {
+	background-color: #232528;
+}
+
+.toolbox-col {
+	background-color: #15B097;
+}
+
+.a {
+	-webkit-appearance: none;
 }
 
 /* Navbar */
 
-.align-left {
-	align-self: left;
-}
-
-.nav {
-	padding-top: 0px;
-	border-bottom: 1px solid #007bff;
-	border-bottom: 1px solid rgba(0, 123, 255, 0.5);
-}
-
 .brand {
-	font-family: "Lucida Console", Monaco, monospace;
-	font-size: 20px;
+	font-family: 'Merriweather', serif;
+	font-style: black;
+	color: #232528;
+	padding-top: 40px;
+	padding-left: 40px;
+	padding-bottom: 40px;
 }
 
-.nav-link {
-	color: LightSlateGrey;
+.nav-list {
+	list-style-type: none;
 }
 
+.nav-item {
+	font-family: 'Merriweather', serif;
+	font-style: bold;
+	color: #232528;
+	font-size: 21px;
+}
+
+.navigation-bar {
+	background-color: #71F79F;
+}
 
 .active {
 	background-color: #F0F8FF;

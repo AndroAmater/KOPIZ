@@ -1,35 +1,35 @@
-.container-fluid
+.col-md-8.content-col
   %p#notice= notice
-  .row
-    //Left-hand Navbar
-    .col-3
-      %a.btn.btn-outline-success.btn-lg.btn-block{:role => "button", :href => "/tasks/new"}New Task
-
-    //Body
-    .col
-      %table.table{ :align => "right"}
-        %thead
-          .pretty
-            %tr
-              %th=sortable "name"
-              %th=sortable "description"
-              %th=sortable "due_date"
-              %th=sortable "context"
-              %th=sortable "priority"
-              %th=sortable "status"
-              /%th=sortable "review_period", "Review Period"
-              /%th=sortable "project_phase", "Project Phase"
-        %tbody
-          - @tasks.each do |task|
-            -if task.status.status_id == "Active" then
-              %tr.task
-                %td= task.name
-                %td= task.description
-                %td= task.due_date.strftime("%e.%-m.%Y")
-                %td= task.context.context
-                %td= task.priority.priority_id
-                %td= task.status.status_id
-                /%td= task.review_period.review_period_id
-                /%td= task.project_phase.name
-                %td= link_to 'Edit', edit_task_path(task)
-                %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
+  %h3 Tasks
+  %table.table{ :align => "right"}
+    %thead
+      .pretty
+        %tr
+          %th
+            =image_tag("glyphicons-31-pencil.png" "10x10")
+          %th=sortable "name"
+          %th=sortable "description"
+          %th=sortable "due_date"
+          %th=sortable "context"
+          %th=sortable "priority"
+          %th=sortable "status"
+          /%th=sortable "review_period", "Review Period"
+          /%th=sortable "project_phase", "Project Phase"
+    %tbody
+      - @tasks.each do |task|
+        -if task.status.status_id == "Active" then
+          %tr.task
+            %td  
+              %span.halflings.halflings-cog
+            %td= task.name
+            %td= task.description
+            %td= task.due_date.strftime("%e.%-m.%Y")
+            %td= task.context.context
+            %td= task.priority.priority_id
+            %td= task.status.status_id
+            /%td= task.review_period.review_period_id
+            /%td= task.project_phase.name
+            /%td= link_to 'Edit', edit_task_path(task)
+            /%td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
+.col-md-2.toolbox-col
+  %a.btn.btn-lg.btn-block{:role => "button", :href => "/tasks/new"}New Task
