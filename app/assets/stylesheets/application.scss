@@ -27,46 +27,71 @@
 }
 
 .toolbox-col {
-	background-color: #15B097;
+	background-color: #232528;
+}
+
+.sortable a {
+	color: rgb(49, 169, 164);
+	-webkit-appearance: none;
 }
 
 .a {
 	-webkit-appearance: none;
 }
 
+/* New Task */
+
+/* Dropdown */
+
+.dropdown-align {
+	display: inline-block;
+	position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+.show {display:block;}
+
 /* Navbar */
 
-.brand {
-	font-family: 'Merriweather', serif;
-	font-style: black;
-	color: #232528;
-	padding-top: 40px;
-	padding-left: 40px;
-	padding-bottom: 40px;
+.nav-container {
+		display: inline-block;
 }
-
 .nav-list {
 	list-style-type: none;
+	margin-top: 30vh;
+  vertical-align: middle;
+	text-align: center;
+	padding-left: 0px;
 }
 
-.nav-item {
+.nav-item a {
 	font-family: 'Merriweather', serif;
 	font-style: bold;
+	-webkit-appearance: none;
 	color: #232528;
 	font-size: 21px;
 }
 
 .navigation-bar {
-	background-color: #71F79F;
+	background-color: #EBD2BE;
 }
 
-.active {
-	background-color: #F0F8FF;
-	color: DarkSlateGrey;
-}
-
-.pretty th .current {
-  padding-right: 12px;
-  background-repeat: no-repeat;
-  background-position: right center;
+#full-height {
+	height: 100vh;
 }
