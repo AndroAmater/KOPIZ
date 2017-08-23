@@ -20,9 +20,5 @@
 //= require_tree .
 
 function main() {
-    $("#myDropdown").hide();
-    $(".dropbtn").click(function(){
-      $("#myDropdown").toggle();
-    });
 }
 $(document).ready(main);
