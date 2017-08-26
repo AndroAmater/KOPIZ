@@ -24,6 +24,7 @@
 
 .content-col {
 	background-color: #232528;
+	overflow-y: scroll;
 }
 
 .toolbox-col {
@@ -39,14 +40,18 @@
 	-webkit-appearance: none;
 }
 
+.overflow-scroll {
+	overflow-y: scroll;
+}
 /* Navbar */
 
 .nav-container {
 		display: inline-block;
+		//overflow-y: scroll;
 }
 .nav-list {
 	list-style-type: none;
-	margin-top: 30vh;
+	margin-top: 5vh;
   vertical-align: middle;
 	text-align: center;
 	padding-left: 0px;
@@ -62,8 +67,25 @@
 
 .navigation-bar {
 	background-color: #EBD2BE;
+	max-height: 100%;
+	overflow-y: scroll;
+}
+
+.row-main {
+	max-height: 100vh;
+}
+
+#form-text-color select, label, input {
+	color: #232528;
+}
+.nav-text-color {
+		color: #232528;
 }
 
 #full-height {
 	height: 100vh;
+}
+
+#bottom-of-page {
+	margin-top: 60vh;
 }

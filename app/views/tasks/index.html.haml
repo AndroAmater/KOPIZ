@@ -1,11 +1,10 @@
+= render "shared/navbar"
 .col-md-9.content-col#full-height
   %p#notice= notice
   %h3 Tasks
   %table.table{ :align => "right"}
     %thead
       %tr
-        %th
-          %img{:src => "/glyphicons-31-pencil.png", :height => "10px", :width => "10px"}
         %th.sortable=sortable "name"
         %th.sortable=sortable "description"
         %th.sortable=sortable "due_date"
@@ -20,7 +19,7 @@
           %tr.task
             %td= task.name
             %td= task.description
-            %td= task.due_date.strftime("%e.%-m.%Y")
+            %td= task.due_date.try(:strftime, "%e.%-m.%Y")
             %td= task.context.context
             %td= task.priority.priority_id
             %td= task.status.status_id
