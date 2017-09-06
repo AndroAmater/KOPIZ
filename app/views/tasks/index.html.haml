@@ -1,16 +1,25 @@
 = render "shared/navbar"
 .col-md-9.content-col#full-height
   %p#notice= notice
+  %h3= @ascending
+  %h3= @sort_direction
   %h3 Tasks
   %table.table{ :align => "right"}
     %thead
       %tr
-        %th.sortable=sortable "name"
-        %th.sortable=sortable "description"
-        %th.sortable=sortable "due_date"
-        %th.sortable=sortable "context"
-        %th.sortable=sortable "priority"
-        %th.sortable=sortable "status"
+        %th.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            Name
+          %ul.dropdown-menu
+            %li= link_to "Ascending", {:ascending => true}, {:class => "direction-asc"}
+            %li= link_to "Descending", {:ascending => false}, {:class => "direction-desc"}
+            %li= sort_column_gen("name")
+            %li= sort_column_gen("description")
+        %th.sortable Description
+        %th.sortable Due_date
+        %th.sortable Context
+        %th.sortable Priority
+        %th.sortable Status
         /%th=sortable "review_period", "Review Period"
         /%th=sortable "project_phase", "Project Phase"
     %tbody
@@ -23,7 +32,3 @@
             %td= task.context.context
             %td= task.priority.priority_id
             %td= task.status.status_id
-            /%td= task.review_period.review_period_id
-            /%td= task.project_phase.name
-            /%td= link_to 'Edit', edit_task_path(task)
-            /%td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
