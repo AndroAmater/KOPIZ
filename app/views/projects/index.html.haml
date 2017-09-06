@@ -1,23 +1,21 @@
-%h1 Listing projects
+= render "shared/navbar"
+.col-md-9.content-col#full-height
+  %p#notice= notice
+  %h3 Projects
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th
-      %th
-      %th
-
-  %tbody
-    - @projects.each do |project|
+  %table.table{ :align => "right"}
+    %thead
       %tr
-        %td= project.name
-        %td= project.description
-        %td= link_to 'Show', project
-        %td= link_to 'Edit', edit_project_path(project)
-        %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Name
+        %th Description
+        %th
 
-%br
-
-= link_to 'New Project', new_project_path
+    %tbody
+      - @projects.each do |project|
+        %tr
+          %td= project.name
+          %td= project.description
+          %td
+            = link_to 'Show', project
+            = link_to 'Edit', edit_project_path(project)
+            = link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }

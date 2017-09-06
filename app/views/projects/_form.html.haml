@@ -1,5 +1,16 @@
-= simple_form_for(@project) do |f|
-  = f.error_notification
-  = f.input :name
-  = f.input :description
-  = f.button :submit
+.form-group#form-text-color
+  = bootstrap_form_for @project, remote: true, url: {action: "create"} do |f|
+    = f.text_field :name
+    = f.text_area :description
+    = f.submit "Create"
+%button.close-form-btn.btn.btn-primary Back
+
+:javascript
+  $(document).ready( function() {
+    $(".close-form-btn").click( function() {
+      $('#task-form').slideUp(250);
+      $("#form-title").delay(250).slideUp(50);
+      $(".nav-list").delay(300).slideDown(100);
+      $("#new_link").delay(400).slideDown(50);
+    });
+  });

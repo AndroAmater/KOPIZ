@@ -1,23 +1,21 @@
-%h1 Listing project_phases
+= render "shared/navbar"
+.col-md-9.content-col#full-height
+  %p#notice= notice
+  %h3 Project Phases
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th
-      %th
-      %th
-
-  %tbody
-    - @project_phases.each do |project_phase|
+  %table.table{ :align => "right"}
+    %thead
       %tr
-        %td= project_phase.name
-        %td= project_phase.description
-        %td= link_to 'Show', project_phase
-        %td= link_to 'Edit', edit_project_phase_path(project_phase)
-        %td= link_to 'Destroy', project_phase, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Name
+        %th Description
+        %th
 
-%br
-
-= link_to 'New Project phase', new_project_phase_path
+    %tbody
+      - @project_phases.each do |project_phase|
+        %tr
+          %td= project_phase.name
+          %td= project_phase.description
+          %td
+            = link_to 'Show', project_phase
+            = link_to 'Edit', edit_project_phase_path(project_phase)
+            = link_to 'Destroy', project_phase, :method => :delete, :data => { :confirm => 'Are you sure?' }

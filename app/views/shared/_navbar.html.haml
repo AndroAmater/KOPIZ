@@ -13,7 +13,17 @@
         %a{:href => "#"} Ipsum
       %li.nav-item
         %a{:href => "#"} Dolor
-  %h3#form-title.nav-text-color{:style => "display: none"} New Task
+  - if controller.controller_name == "tasks"
+    %h3#form-title.nav-text-color{:style => "display: none"} New Task
+  - elsif controller.controller_name == "projects"
+    %h3#form-title.nav-text-color{:style => "display: none"} New Project
+  - elsif controller.controller_name == "project_phases"
+    %h3#form-title.nav-text-color{:style => "display: none"} New Project Phase
   #task-form{:style => "display:none;"}
   .nav-item#bottom-of-page.new-task-button
-    = link_to "New Task", new_task_path, id: "new_link", remote: true
+    - if controller.controller_name == "tasks"
+      = link_to "New Task", new_task_path, id: "new_link", remote: true
+    - elsif controller.controller_name == "projects"
+      = link_to "New Project", new_project_path, id: "new_link", remote: true
+    - elsif controller.controller_name == "project_phases"
+      = link_to "New Project Phase", new_project_phase_path, id: "new_link", remote: true
