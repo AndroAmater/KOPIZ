@@ -10,7 +10,7 @@ class TasksController < ApplicationController
     if @ascending = false
        @sort_direction = "DESC"
     end
-    @tasks = Task.order("name " + @sort_direction)
+    @tasks = Task.sorted(direction: @sort_direction)
   end
 
   # GET /tasks/1
