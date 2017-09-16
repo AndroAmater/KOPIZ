@@ -1,6 +1,12 @@
 class Task < ApplicationRecord
-	validates_presence_of :name, :context_id, :priority_id, :project_phase_id, :review_period_id, :status_id
+	validates_presence_of :name,
+												:context_id,
+												:priority_id,
+												:project_phase_id,
+												:review_period_id,
+												:status_id
 
+	belongs_to :user
 	belongs_to :project_phase
 	belongs_to :context
 	belongs_to :priority
@@ -20,10 +26,28 @@ class Task < ApplicationRecord
 	accepts_nested_attributes_for :status,
 																reject_if: lambda { |attrs| attrs["status_id"].blank? }
 
-	enum context_id: { meeting: 1, communication: 2, information_work: 3, knowledge_work: 4, learning: 5, errand: 6, chore:7}
-	enum priority_id: { top: 1, high: 2, normal: 3, low: 4}
-	enum review_period_id: { weekly: 3, monthly: 4, quarterly: 5, yearly: 6}
-	enum status_id: { active: 1, completed: 2, abandoned: 3, next_project: 4}
+	enum context_id: {meeting: 1,
+										communication: 2,
+										information_work: 3,
+										knowledge_work: 4,
+										learning: 5,
+										errand: 6,
+										chore: 7}
+
+	enum priority_id: {top: 1,
+										high: 2,
+										normal: 3,
+										low: 4}
+
+	enum review_period_id: {weekly: 1,
+													monthly: 2,
+													quarterly: 3,
+													yearly: 4}
+
+	enum status_id: {active: 1,
+									completed: 2,
+									abandoned: 3,
+									next_project: 4}
 
 	after_initialize :set_defaults
 

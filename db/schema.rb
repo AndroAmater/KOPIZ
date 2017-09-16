@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910113524) do
+ActiveRecord::Schema.define(version: 20170915123620) do
 
   create_table "contexts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,7 +30,9 @@ ActiveRecord::Schema.define(version: 20170910113524) do
     t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["project_id"], name: "index_project_phases_on_project_id"
+    t.index ["user_id"], name: "index_project_phases_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -38,6 +40,8 @@ ActiveRecord::Schema.define(version: 20170910113524) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "review_periods", force: :cascade do |t|
@@ -78,11 +82,13 @@ ActiveRecord::Schema.define(version: 20170910113524) do
     t.integer "status_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["context_id"], name: "index_tasks_on_context_id"
     t.index ["priority_id"], name: "index_tasks_on_priority_id"
     t.index ["project_phase_id"], name: "index_tasks_on_project_phase_id"
     t.index ["review_period_id"], name: "index_tasks_on_review_period_id"
     t.index ["status_id"], name: "index_tasks_on_status_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,6 +107,7 @@ ActiveRecord::Schema.define(version: 20170910113524) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

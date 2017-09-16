@@ -1,8 +1,17 @@
 = render "shared/navbar"
 .col-md-9.content-col#full-height
-  %p#notice= notice
-  %h3= @ascending
-  %h3= @sort_direction
+  .row
+    .col-6
+      %p.notice= notice
+      %p.alert= alert
+      %p= "@ascending = #{@ascending}"
+      %h3p= "@sort_direction = #{@sort_direction}"
+    .col-6
+      - if current_user
+        .btn.btn-default.float-right= link_to "Log Out", destroy_user_session_path, method: :delete
+      - else
+        .btn.btn-default.float-right= link_to "Register", new_user_registration_path
+        .btn.btn-default.float-right= link_to "Log In", new_user_session_path
   %h3 Tasks
   %table.table{ :align => "right"}
     %thead
