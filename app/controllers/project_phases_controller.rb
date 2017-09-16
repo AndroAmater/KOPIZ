@@ -28,7 +28,7 @@ class ProjectPhasesController < ApplicationController
 
     respond_to do |format|
       if @project_phase.save
-        format.html { redirect_to @project_phase, notice: 'Project phase was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Project phase was successfully created.' }
       else
         format.html { render :new }
       end
@@ -40,7 +40,7 @@ class ProjectPhasesController < ApplicationController
   def update
     respond_to do |format|
       if @project_phase.update(project_phase_params)
-        format.html { redirect_to @project_phase, notice: 'Project phase was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Project phase was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -52,7 +52,7 @@ class ProjectPhasesController < ApplicationController
   def destroy
     @project_phase.destroy
     respond_to do |format|
-      format.html { redirect_to project_phases_url, notice: 'Project phase was successfully destroyed.' }
+      format.html { redirect_to action: "index", notice: 'Project phase was successfully destroyed.' }
     end
   end
 
