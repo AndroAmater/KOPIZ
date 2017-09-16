@@ -1,6 +1,5 @@
-.form-group#form-text-color{style: => "margin-bottom: 16px;"}
+.form-group#form-text-color
   = bootstrap_form_for @project_phase, remote: true, url: { action: "create"} do |f|
-    = f.error_notification
     = f.text_field :name
     = f.text_area :description
     = collection_select( :project_phase, :project_id, ::Project.all, :id, :name, {}, { :multiple => false } )
