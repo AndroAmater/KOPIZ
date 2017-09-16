@@ -6,6 +6,7 @@ class Task < ApplicationRecord
 	belongs_to :priority
 	belongs_to :review_period
 	belongs_to :status
+	belongs_to :user
 	has_one :project, through: :project_phase
 	has_and_belongs_to_many :tags
 
