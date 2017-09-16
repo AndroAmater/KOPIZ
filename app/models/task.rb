@@ -1,5 +1,10 @@
 class Task < ApplicationRecord
-	validates_presence_of :name, :context_id, :priority_id, :project_phase_id, :review_period_id, :status_id
+	validates_presence_of :name,
+												:context_id,
+												:priority_id,
+												:project_phase_id,
+												:review_period_id,
+												:status_id
 
 	belongs_to :project_phase
 	belongs_to :context
@@ -26,6 +31,7 @@ class Task < ApplicationRecord
 	enum review_period_id: { weekly: 3, monthly: 4, quarterly: 5, yearly: 6}
 	enum status_id: { active: 1, completed: 2, abandoned: 3, next_project: 4}
 =end
+
 	after_initialize :set_defaults
 
 	def set_defaults
