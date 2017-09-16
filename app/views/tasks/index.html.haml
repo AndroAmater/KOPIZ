@@ -24,11 +24,10 @@
         /%th=sortable "project_phase", "Project Phase"
     %tbody
       - @tasks.each do |task|
-        -if task.active?
-          %tr.task
-            %td= task.name
-            %td= task.description
-            %td= task.due_date.try(:strftime, "%e.%-m.%Y")
-            %td= task.context_id.titleize
-            %td= task.priority_id.titleize
-            %td= task.status_id.titleize
+        %tr.task
+          %td= task.name
+          %td= task.description
+          %td= task.due_date.try(:strftime, "%e.%-m.%Y")
+          %td= task.context_id
+          %td= task.priority_id
+          %td= task.status_id

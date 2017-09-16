@@ -19,12 +19,12 @@ class Task < ApplicationRecord
 																reject_if: lambda { |attrs| attrs["review_period_id"].blank? }
 	accepts_nested_attributes_for :status,
 																reject_if: lambda { |attrs| attrs["status_id"].blank? }
-
+=begin
 	enum context_id: { meeting: 1, communication: 2, information_work: 3, knowledge_work: 4, learning: 5, errand: 6, chore:7}
 	enum priority_id: { top: 1, high: 2, normal: 3, low: 4}
 	enum review_period_id: { weekly: 3, monthly: 4, quarterly: 5, yearly: 6}
 	enum status_id: { active: 1, completed: 2, abandoned: 3, next_project: 4}
-
+=end
 	after_initialize :set_defaults
 
 	def set_defaults
