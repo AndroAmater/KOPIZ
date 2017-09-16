@@ -1,8 +1,9 @@
 = render "shared/navbar"
 .col-md-9.content-col#full-height
-  %p#notice= notice
-  %h3= @ascending
-  %h3= @sort_direction
+  =render "shared/login-notice"
+  %p
+    = "@ascending = #{@ascending}"
+    = "@sort_direction = #{@sort_direction}"
   %h3 Tasks
   %table.table{ :align => "right"}
     %thead
