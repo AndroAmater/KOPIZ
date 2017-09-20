@@ -1,21 +1,4 @@
-= render "shared/navbar"
-.col-md-9.content-col#full-height
-  =render "shared/login-notice"
-  %h3 Projects
-
-  %table.table{ :align => "right"}
-    %thead
-      %tr
-        %th Name
-        %th Description
-        %th
-
-    %tbody
-      - @projects.each do |project|
-        %tr
-          %td= project.name
-          %td= project.description
-          %td
-            = link_to 'Show', project
-            = link_to 'Edit', edit_project_path(project)
-            = link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.container
+  %h2.title Projects
+  .row
+    = render @projects

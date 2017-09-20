@@ -1,0 +1,45 @@
+!!! 5
+/ paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7 ] <html class=\"ie6\" lang=\"en\">
+/[if IE 7 ]    <html class=\"ie7\" lang=\"en\">
+/[if IE 8 ]    <html class=\"ie8\" lang=\"en\">
+/[if IE 9 ]    <html class=\"ie9\" lang=\"en\">
+/[if (gt IE 9)|!(IE)] <!--> <html lang=\"en\">
+
+%head
+  %meta{ :charset => "utf-8" }
+
+  -# Uncomment to make IE8 render like IE7
+  -# meta http-equiv="X-UA-Compatible" content="IE=7"
+
+  -# Set the viewport width to device width for mobile
+  %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+
+  %title= content_for?(:title) ? yield(:title) : "KOPIZ"
+  = stylesheet_link_tag "dashboard"
+  = csrf_meta_tag
+  = javascript_include_tag "application"
+
+%body
+
+  /NAVBAR
+  %nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+    %a.navbar-brand{:href => "#"} Dashboard
+    %button.navbar-toggler.d-lg-none{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarsExampleDefault.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        %li.nav-item.active
+          %a.nav-link{:href => "#"}
+            Home
+            %span.sr-only (current)
+        %li.nav-item
+          %a.nav-link{:href => "#"} Settings
+        %li.nav-item
+          %a.nav-link{:href => "#"} Profile
+        %li.nav-item
+          %a.nav-link{:href => "#"} Help
+      %form.form-inline.mt-2.mt-md-0
+        %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "text"}/
+        %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+  = yield
