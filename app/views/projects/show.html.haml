@@ -1,16 +1,8 @@
+%h2.title= @project.name
 %p#notice= notice
-%h1= @project.name
-%p
-  %strong Description:
-  = @project.description
+%p= @project.description
+%hr
 %h2 Project Phases:
-%table
-  %tr
-    %th Name
-    %th Description
-    - ::ProjectPhase.all.where("project_id = ?", params[:project_id]).each do |project_phase|
-      %td= project_phase.name
-      %th= project_phase.description
-
-= link_to 'Edit', edit_project_path(@project)
-= link_to 'Back', projects_path
+- ::ProjectPhase.by_project(params[:id]).each do |project_phase|
+  %td= project_phase.name
+  %th= project_phase.description
