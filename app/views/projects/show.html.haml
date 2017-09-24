@@ -1,8 +1,1 @@
-= tabs do |c|
-  - ::ProjectPhase.by_project(params[:id]).each do |project_phase|
-    - c.tab project_phase.name.titleize do
-      %span
-        .container-fluid
-          = render :partial => "shared/task",
-                  :collection => ::Task.where(project_phase_id: project_phase.id),
-                  :as => :task
+= render_tabs_content tab_coll: @project_phases, cont_coll: @tasks, where: "project_phase_id = ?"

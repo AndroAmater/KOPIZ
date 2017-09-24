@@ -25,6 +25,9 @@ class Task < ApplicationRecord
 																reject_if: lambda { |attrs| attrs["review_period_id"].blank? }
 	accepts_nested_attributes_for :status,
 																reject_if: lambda { |attrs| attrs["status_id"].blank? }
+
+	scope :by_project_phase_id_range, ->(min, max) { where(project_phase_id: min..max)}
+
 =begin
 	enum context_id: { meeting: 1, communication: 2, information_work: 3, knowledge_work: 4, learning: 5, errand: 6, chore:7}
 	enum priority_id: { top: 1, high: 2, normal: 3, low: 4}
