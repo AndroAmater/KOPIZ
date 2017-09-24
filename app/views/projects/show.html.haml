@@ -2,6 +2,7 @@
   - ::ProjectPhase.by_project(params[:id]).each do |project_phase|
     - c.tab project_phase.name.titleize do
       %span
-        - ::Task.where(project_phase_id: project_phase.id).each do |task|
-          %p
-            =task.name
+        .container-fluid
+          = render :partial => "shared/task",
+                  :collection => ::Task.where(project_phase_id: project_phase.id),
+                  :as => :task

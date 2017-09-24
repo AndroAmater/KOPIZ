@@ -95,3 +95,35 @@ h1 {
 .nav-tabs {
   background-color: #343a40;
 }
+
+.task-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.task-list-item {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.task-card-body {
+  padding: 1px;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.navbar {
+  max-width: 100%;
+  overflow: hidden;
+}
