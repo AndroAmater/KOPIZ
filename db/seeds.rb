@@ -40,7 +40,7 @@ Status.create!(status_id: "next_project")
                 user_id: 1)
 end
 
-5.times do |index|
+10.times do |index|
   5.times do |i|
     ProjectPhase.create!(name: "Project phase #{i}",
                         description: "I am describing project phase #{i}!",
@@ -49,14 +49,17 @@ end
   end
 end
 
-50.times do |index|
-  Task.create!(name: "Task {index}",
-              description: "I am describing task {index}!",
-              due_date: Time.now.strftime('%Y-%m-%d %H:%M:%S'),
-              project_phase_id: 1,
-              context_id: 1,
-              priority_id: 1,
-              review_period_id: 1,
-              status_id: 1,
-              user_id: 1)
+10.times do |index|
+  10.times do |i|
+    ii = index * i
+    Task.create!(name: "Task #{ii}.",
+                description: "I am describing task {index}!",
+                due_date: Time.now.strftime('%Y-%m-%d %H:%M:%S'),
+                project_phase_id: i+1,
+                context_id: 1,
+                priority_id: 1,
+                review_period_id: 1,
+                status_id: 1,
+                user_id: 1)
+  end
 end

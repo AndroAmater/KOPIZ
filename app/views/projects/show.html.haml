@@ -1,8 +1,23 @@
-%h2.title= @project.name
-%p#notice= notice
-%p= @project.description
-%hr
-%h2 Project Phases:
-- ::ProjectPhase.by_project(params[:id]).each do |project_phase|
-  %td= project_phase.name
-  %th= project_phase.description
+%nav.nav.nav-tabs
+  - ::ProjectPhase.by_project(params[:id]).each_with_index do |project_phase, index|
+    %a.nav-item.nav-link{"data-toggle" => "tab", :href => "#project_phase_#{project_phase.id}", :role => "tab", :id => (project_phase.id), :class => ("active" unless index != 0)}= project_phase.name
+.tab-content{:id => "nav-TabContent"}
+  - ::ProjectPhase.by_project(params[:id]).each_with_index do |project_phase, index|
+    .tab-pane.fade{:role => "tabpanel", :id => "project_phase_#{project_phase.id}", :class => ("active show" unless index != 0)}
+      %table.table{ :align => "right"}
+        %thead
+          %tr
+            %th Description
+            %th Due_date
+            %th Context
+            %th Priority
+            %th Status
+        %tbody
+          - ::Task.where(project_phase_id: project_phase.id).each do |task|
+            %tr.task
+              %td= task.name
+              %td= task.description
+              %td= task.due_date.try(:strftime, "%e.%-m.%Y")
+              %td= task.context_id
+              %td= task.priority_id
+              %td= task.status_id
