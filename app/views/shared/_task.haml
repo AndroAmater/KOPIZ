@@ -4,3 +4,6 @@
       %li.task-list-item
         %strong= task.name
       %li.task-list-item= task.description
+      %li.task-list-item
+        Due Date:
+        = time_ago_in_words(task.due_date)

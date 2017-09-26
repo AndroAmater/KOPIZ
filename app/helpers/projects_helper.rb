@@ -4,6 +4,7 @@ module ProjectsHelper
       tab_coll.each do |item|
         c.tab item.name.titleize do
           "<span><div class='container-fluid'>".html_safe +
+              (render "shared/new_task", item: item ) +
               (render :partial => 'shared/task',
                       :collection => cont_coll.where(where, item.id),
                       :as => :task) +

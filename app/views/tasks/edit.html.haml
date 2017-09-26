@@ -6,7 +6,7 @@
         = bootstrap_form_for @task, url: {action: "update"} do |f|
           = collection_select( :task, :status_id, ::Status.all, :id, :status_id, {}, { :multiple => false } )
           %br/
-          = collection_select( :task, :context_id, ::Context.all, :id, :context, {}, { :multiple => false } )
+          = collection_select( :task, :context_id, ::Context.all, :id, :context_id, {}, { :multiple => false } )
           %br/
           = collection_select( :task, :project_phase_id, ::ProjectPhase.all, :id, :name, {}, { :multiple => false } )
           %br/
