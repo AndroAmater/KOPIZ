@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   def index
     @ascending = params[:ascending]
     @sort_direction =  "ASC"
-    if @ascending = false
+    if @ascending == false
        @sort_direction = "DESC"
     end
     @tasks = Task.sorted(direction: @sort_direction)
@@ -20,7 +20,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    @task = Task.new(:user_id => current_user.id)
   end
 
   # GET /tasks/1/edit
@@ -31,13 +31,8 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to action: "index", notice: 'Task was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @task.save!
+      flash.now[:notice] = 'Task was successfully created.'
     end
   end
 
@@ -46,7 +41,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to action: "index", notice: 'Task was successfully updated.' }
+        flash.now[:notice] = 'Task was successfully updated.'
       else
         format.html { render :edit }
       end
@@ -79,6 +74,7 @@ class TasksController < ApplicationController
                                   :review_period_id,
                                   :priority_id,
                                   :project_phase_id,
-                                  :status_id)
+                                  :status_id,
+                                  :user_id)
     end
 end

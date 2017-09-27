@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @task = Task.new
     @project_phases = ProjectPhase.by_project(params[:id])
     @tasks = Task.by_project_phase_id_range(ProjectPhase.by_project(params[:id]).first.id, ProjectPhase.by_project(params[:id]).last.id)
   end

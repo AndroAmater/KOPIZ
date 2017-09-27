@@ -15,3 +15,15 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready( function() {
+  $(".new-task-link").click(function (event) {
+    $('#task-form').slideDown(250);
+    event.preventDefault();
+  });
+
+  $(".close-form-btn").click( function (event) {
+    $('#task-form').slideUp(250);
+  });
+});
