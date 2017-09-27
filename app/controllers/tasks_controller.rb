@@ -5,12 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @ascending = params[:ascending]
-    @sort_direction =  "ASC"
-    if @ascending == false
-       @sort_direction = "DESC"
-    end
-    @tasks = Task.sorted(direction: @sort_direction)
+    @tasks = Task.all
   end
 
   # GET /tasks/1
@@ -20,7 +15,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new(:user_id => current_user.id)
+    @task = Task.new
   end
 
   # GET /tasks/1/edit
