@@ -131,7 +131,7 @@ h1 {
 #task-form {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 20;
   background-color: white;
   padding: 10px;
   width: 60vw;
@@ -150,4 +150,11 @@ h1 {
   a {
     color: white;
   }
+}
+
+.nav-tabs {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 3.5rem;
+  z-index: 1040;
 }
