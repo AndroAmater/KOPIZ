@@ -26,4 +26,8 @@ $(document).ready( function() {
   $(".close-form-btn").click( function (event) {
     $('#task-form').slideUp(250);
   });
+
+  $(".create_task_btn").click( function (){
+    $('#task-form').slideUp(250);
+  });
 });

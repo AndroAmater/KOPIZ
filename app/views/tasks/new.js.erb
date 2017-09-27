@@ -1,5 +1,0 @@
-$("#new_link").hide();
-$('#task-form').html("<%= j (render 'form') %>");
-$(".nav-list").slideUp(100);
-$("#form-title").delay(100).slideDown(50);
-$('#task-form').delay(150).slideDown(250);
