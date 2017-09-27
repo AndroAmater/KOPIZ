@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @task = Task.new
-    @project_phases = ProjectPhase.by_project(params[:id])
+    @project_phases = ProjectPhase.where("project_id = ?", @project)
     @tasks = Task.by_project_phase_id_range(@project_phases.first.id, @project_phases.last.id)
   end
 
@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      @project = Project.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
