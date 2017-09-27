@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927195633) do
+ActiveRecord::Schema.define(version: 20170927213358) do
 
   create_table "contexts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20170927195633) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "slug"
+    t.string "subtask"
     t.index ["context_id"], name: "index_tasks_on_context_id"
     t.index ["priority_id"], name: "index_tasks_on_priority_id"
     t.index ["project_phase_id"], name: "index_tasks_on_project_phase_id"
